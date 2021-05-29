@@ -13,17 +13,13 @@ var clientConfig = {
        "domain"   : 'https://accounts.zoho.com'
    },
    "local": {
-       "clientId" : '1000.L86CQYOC6IPLBH7VHL8F4FOUH66ICK',
+       "clientId" : '1000.Z19HZLE42ODY7QKWI39I7HA2HVTIQC',
        "domain"   : 'https://accounts.localzoho.com'
    },
-   "dev_old": {
-       "clientId" : '1000.L86CQYOC6IPLBH7VHL8F4FOUH66ICK',
-       "domain"   : 'https://accounts-old.csez.zohocorpin.com'
-   },
    "dev": {
-       "clientId" : '1000.L86CQYOC6IPLBH7VHL8F4FOUH66ICK',
+       "clientId" : '1000.Y6XSTF5WOFO51G6AG3D77M5IYVP4KF',
        "domain"   : 'https://accounts.csez.zohocorpin.com'
-   }
+   }(
 };
 
 let currentAppServer = 'live';
