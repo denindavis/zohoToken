@@ -5,8 +5,6 @@ let scope       = `Desk.tickets.ALL,Desk.basic.ALL`;                            
 let redirectUri = 'https://denindavis.github.io/zohoToken/redirect.html'; //YOUR REDIRECT URL 
 let oauthDomain = 'https://accounts.zoho.com';
 
-let scopesHistory = [];
-
 var clientConfig = {
    "live" : {
        "clientId" : '1000.L86CQYOC6IPLBH7VHL8F4FOUH66ICK',
@@ -19,7 +17,7 @@ var clientConfig = {
    "dev": {
        "clientId" : '1000.Y6XSTF5WOFO51G6AG3D77M5IYVP4KF',
        "domain"   : 'https://accounts.csez.zohocorpin.com'
-   }(
+   }
 };
 
 let currentAppServer = 'live';
@@ -54,12 +52,9 @@ function selectAppServer(appServer){
 
 function initiateAuthorize(e){
     e.preventDefault();
-    scope       = document.getElementById("scopes").value.trim();
+    scope = M.Chips.getInstance($('.chips')).chipsData.map(a => a.tag).join().trim();
+    if(scope.length==0) {alert("Select Scopes"); return}
     window.localStorage.setItem("last_scope", scope);
-    if(scopesHistory.indexOf(scope)<0){
-      scopesHistory.push(scope);
-      window.localStorage.setItem("scopesHistory", JSON.stringify(scopesHistory));
-    }
     let authWindow = window.open(`${oauthDomain}/oauth/v2/auth?response_type=token&client_id=${clientId}&scope=${scope}&redirect_uri=${redirectUri}&state=1234`,
                             '_blank',
                             'width=500,height=500'
@@ -96,39 +91,12 @@ function syncScopesForAutoFill(){
     window.localStorage.setItem("last_scope", document.getElementById("scopes").value.trim());
 }
 
-function selectHistory(scope){
-    document.getElementById("scopes").value = scope;
-    window.localStorage.setItem("last_scope", scope);
-    if(scopesHistory.indexOf(scope)>=0){
-      var index = scopesHistory.indexOf(scope);
-      if (index > -1) {
-        scopesHistory.splice(index, 1);
-      }
-    }
-    scopesHistory.push(scope);
-    window.localStorage.setItem("scopesHistory", JSON.stringify(scopesHistory));
-    hideElem('scopes_history');
-}
-
 function initDefaultValue(){
-  if(window.localStorage.scopesHistory){
-    scopesHistory = JSON.parse(window.localStorage.scopesHistory);
-  }
-  if(!window.localStorage.last_scope){
+   let lastScope = window.localStorage.last_scope
+  if(!lastScope){
         window.localStorage.setItem("last_scope", "Desk.tickets.ALL,Desk.settings.ALL,Desk.search.READ,Desk.basic.READ");
     }
-    document.getElementById("scopes").value = window.localStorage.last_scope;
-    if(window.localStorage.last_scope){
-      document.getElementById(window.localStorage.last_appserver).click();
-    }
-}
-
-function showScopesHistory(){
-  document.getElementById('scopes_history_screen').innerHTML = "";
-  document.getElementById('scopes_history').style.display = "block";
-  scopesHistory.forEach(function(scope) {
-    document.getElementById('scopes_history_screen').insertAdjacentHTML('afterbegin', `<div onclick="selectHistory('${scope}')" class="hist_item">${scope}</div>`);
-  });
+    lastScope.split(",").map(a => ({"tag":a})).forEach(b=> M.Chips.getInstance($('.chips')).addChip(b));
 }
 
 function hideElem(id){
