@@ -6,169 +6,211 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
         <meta name="description" content="Create OAuth token for Zoho in One Step.">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+          
+
         <style>
             .page{
-                margin:7% 20%;
+                margin:0% 15%;
             }
-            .form-item{
-                margin-bottom : 25px;
+           button {
+                padding: 10px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 19px;
+                margin: 4px 2px;
+                cursor: pointer;
+                background-color: #30352c; 
+                color: #4CAF50; 
+                border: 3px solid #4CAF50;
+                border-radius: 20px;
+                }
+            button:hover {
+                color: greenyellow; 
+                border: 3px solid greenyellow;
             }
-            .form-label{
-                font-size:25px;
-                color:darkcyan;
-                margin-bottom:5px;
+            button:focus {
+                outline: none;
+                background-color: #2b2a2a;
             }
-            .form-input input[type ="text"]{
-                padding: 7px 10px;
-                font-size:18px;
-                width:75%;
-                border:1px solid black;
-                border-width : 0px 0px 2px 0px;
+            .dropdown-content {
+                width:500px !important;
+                }
+
+
+            body, html
+            {
+                background-color: #2b2929 !important;
+                color: white
             }
-            button{
-                padding : 7px 15px;
-                border-radius : 5px;
-                background-color: darkcyan;
-                color:white;
-                font-size : 14px;
-                cursor:pointer;
+
+            .intro
+            {
+                margin: auto;
+                width: 50%;
             }
-            #oauthtoken{
-                border :  2px dotted darkcyan;
-                padding: 5px 15px;
-                font-size:27px;
-                color:darkcyan;
-            }
-            .form-result{
-                font-size:18px;
-                margin-top: 75px;
-                color:crimson;
-            }
-            .appserver-btn{
-                margin: 15px;
-                font-family: Arial;
-            }
-            h1{
-                font-weight: normal;
-                font-family: Palatino;
+
+            .intro h1
+            {
+                font-weight: 900;
+                text-align: center;
+                text-transform: uppercase;
+                font-family: serif;
                 font-size: 50px;
             }
-            .appserver-btn:hover, label:hover, input[type="radio"]{
-                cursor: pointer;
-                color: navy;
+            .sel{
+                position: relative;
+                margin: 0px 0px 0px 5px;
             }
-            .form-label i{
-                color: silver;
+            .for {
+                position: relative;
+                margin-top: 54px;
+                margin-left: 10px;
             }
-            .author{
-                float: right;
+            .inlinetable{
+                display: inline-table;
             }
-            .theater_window{
-                display: none;
-                position: fixed;
-                top: 0px;
-                bottom: 0px;
-                left: 0px;
-                right: 0px;
-                background-color: rgba(0,0,0,0.4);
-                text-align: right;
+            .select-dropdown, input{
+                color: white!important
             }
-            .theater{
-                background-color: white;
-                display: inline-block;
-                width: 60%;
-                text-align: left;
-                padding-left: 50px;
-                height: 100%;
-                overflow-y: auto;
-            }
-            .hist_item {
-                padding: 5px 15px;
-                border: 1px dotted silver;
-                margin: 10px;
-                margin-right: 15px;
-                overflow-wrap: break-word;
-                font-family: sans-serif;
-            }
-            .hist_item:hover{
-                background-color: whitesmoke;
-                cursor: pointer;
-            }
-            .theater_close{
-                    position: absolute;
-                    right: 35px;
-                    top: 25px;
-                    font-size: 40px;
-                    color: crimson;
-                    padding: 10px;
-                    cursor: pointer;
-            }
-            .show_hist{
-                    display: inline-block;
-                    padding: 5px 15px;
-                    background-color: whitesmoke;
-                    border-radius: 10px;
-                    cursor: pointer;
-                    color: black;
-            }
+           
         </style>
-        <script type="text/javascript" src="./deskClientOAuth.js"></script>
+        <script type="text/javascript" src="deskClientOAuth.js"></script>
+
+       
     </head>
     <body onload="initDefaultValue()">
-        <div class="page">
-            <form>
-                <h1>Zoho OAuth Token</h1>
-                <br><br>
-                <div class="form-item">
-                    <div class="form-label">
-                        Scope <i>(Seperated by comma)</i>
+            <form style="position: absolute;width: 100%;margin-top: 150px;">
+                    <div class="intro">
+                            <h1 class="grey-text text-lighten-5 inlinetable" >Zoho OAuth Token </h1><p class="inlinetable for"> for </p>
+                                        <div class="sel inlinetable">
+                                            <select id="server">
+                                              <option value="live" >USDC Live</option>
+                                              <option value="local">Local</option>
+                                              <option value="dev">Development CSEZ</option>
+                                            </select>
+                                          </div>
                     </div>
-                    <div class="form-input">
-                        <input required id="scopes" oninput="syncScopesForAutoFill()" type="text" autocomplete="on" value="" placeholder="example : Desk.tickets.ALL,Desk.tasks.ALL,Desk.settings.ALL,Desk.events.ALL,Desk.search.READ..."/>
-                        <div class="show_hist" onclick="showScopesHistory()">
-                            Select From history
+                            <div class="container about">
+                            <h5>Scopes</h5>
                         </div>
-                    </div>
+
+                        <div class="page">
+                            <div class="chips chips-placeholder chips-autocomplete" id="scopes"></div>
+                        </div>
+
                 </div>
-                <div class="form-item">
-                    <div class="form-label">
-                        Server Type
-                    </div>
-                    <div class="form-input">
-                        <div class="appserver-btn">
-                            <input checked type="radio" name="appserver" id="live" onclick="selectAppServer('live')"/> <label for="live"> Zoho Live </label>
-                        </div>
-                        <div class="appserver-btn">
-                            <input type="radio" name="appserver" id="local" onclick="selectAppServer('local')"/> <label for="local"> Zoho Local (localzoho.com) </label>
-                        </div>
-                        <div class="appserver-btn">
-                            <input type="radio" name="appserver" id="dev_old" onclick="selectAppServer('dev_old')"/> <label for="dev_old"> Zoho Development - Old (accounts-old.csez.zohocorpin.com) </label>
-                        </div>
-                        <div class="appserver-btn">
-                            <input type="radio" name="appserver" id="dev" onclick="selectAppServer('dev')"/> <label for="dev"> Zoho Development (accounts.csez.zohocorpin.com) </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-item">
-                    <div class="form-input">
+                    <div style="width: 13%;margin: auto">
                         <button type="submit" onclick="initiateAuthorize(event)">
+                                <i class="material-icons right">generating_tokens</i>
                             Get OAuth token
                         </button>
                     </div>
-                </div>
             </form>
 
-            <div class="form-result">
-                <span>OAuth Token</span> <br> <br>  <b id="oauthtoken">To be generated...</b>
+            <div class="intro">
+                <b id="oauthtoken"></b>
             </div>
         </div>
-        <div class="theater_window" id="scopes_history">
-            <div class="theater">
-                <div onclick="hideElem('scopes_history')" class="theater_close">X</div>
-                <h1>Scopes History</h1>
-                <div class="screen" id="scopes_history_screen">
-                </div>
-            </div>
-        </div>
+
+
+        <script>
+                $('.chips-autocomplete').chips({
+                    autocompleteOptions: {
+                    data: {
+                        'Desk.activities.calls.READ' : null,
+                        'Desk.activities.calls.UPDATE' : null,
+                        'Desk.activities.CREATE' : null,
+                        'Desk.activities.events.READ' : null,
+                        'Desk.activities.READ' : null,
+                        'Desk.activities.tasks' : null,
+                        'Desk.activities.tasks.READ' : null,
+                        'Desk.activities.UPDATE' : null,
+                        'Desk.articles.ALL' : null,
+                        'Desk.articles.CREATE' : null,
+                        'Desk.articles.READ' : null,
+                        'Desk.articles.UPDATE' : null,
+                        'Desk.basic.ALL' : null,
+                        'Desk.basic.CREATE' : null,
+                        'Desk.basic.READ' : null,
+                        'Desk.basic.UPDATE' : null,
+                        'Desk.calls.ALL' : null,
+                        'Desk.calls.CREATE' : null,
+                        'Desk.calls.DELETE' : null,
+                        'Desk.calls.READ' : null,
+                        'Desk.calls.UPDATE' : null,
+                        'Desk.calls.WRITE' : null,
+                        'Desk.community.ALL' : null,
+                        'Desk.community.CREATE' : null,
+                        'Desk.community.DELETE' : null,
+                        'Desk.community.READ' : null,
+                        'Desk.community.UPDATE' : null,
+                        'Desk.contacts.ALL' : null,
+                        'Desk.contacts.CREATE' : null,
+                        'Desk.contacts.DELETE' : null,
+                        'Desk.contacts.READ' : null,
+                        'Desk.contacts.UPDATE' : null,
+                        'Desk.contacts.WRITE' : null,
+                        'Desk.events.ALL' : null,
+                        'Desk.events.CREATE' : null,
+                        'Desk.events.DELETE' : null,
+                        'Desk.events.READ' : null,
+                        'Desk.events.UPDATE' : null,
+                        'Desk.events.WRITE' : null,
+                        'Desk.extensions.ALL' : null,
+                        'Desk.imports' : null,
+                        'Desk.integrations.ALL' : null,
+                        'Desk.integrations.CREATE' : null,
+                        'Desk.integrations.DELETE' : null,
+                        'Desk.integrations.READ' : null,
+                        'Desk.integrations.UPDATE' : null,
+                        'Desk.products.CREATE' : null,
+                        'Desk.products.DELETE' : null,
+                        'Desk.products.READ' : null,
+                        'Desk.products.UPDATE' : null,
+                        'Desk.search.READ' : null,
+                        'Desk.settings.ALL' : null,
+                        'Desk.settings.CREATE' : null,
+                        'Desk.settings.DELETE' : null,
+                        'Desk.settings.READ' : null,
+                        'Desk.settings.UPDATE' : null,
+                        'Desk.settings.WRITE' : null,
+                        'Desk.tasks.ALL' : null,
+                        'Desk.tasks.CREATE' : null,
+                        'Desk.tasks.DELETE' : null,
+                        'Desk.tasks.READ' : null,
+                        'Desk.tasks.UPDATE' : null,
+                        'Desk.tasks.WRITE' : null,
+                        'Desk.tickets.ALL' : null,
+                        'Desk.tickets.CREATE' : null,
+                        'Desk.tickets.DELETE' : null,
+                        'Desk.tickets.READ' : null,
+                        'Desk.tickets.UPDATE' : null,
+                        'Desk.tickets.WRITE' : null,
+                        'Desk.zia.ALL' : null,
+                        'Desk.zia.CREATE' : null,
+                        'Desk.zia.DELETE' : null,
+                        'Desk.zia.READ' : null,
+                        'Desk.zia.UPDATE' : null
+                    },
+                    limit: Infinity,
+                    minLength: 1,
+                    placeholder: "Select scopes",
+                    secondaryPlaceholder : "Select scopes"
+                    }
+                });
+
+                $(document).ready(function(){
+                    $('select').formSelect();
+                });
+
+                $('#server').on('change', function() {
+                    selectAppServer($(this).val());
+                });
+            </script>
     </body>
 </html>
