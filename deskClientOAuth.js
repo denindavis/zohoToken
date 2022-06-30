@@ -18,7 +18,7 @@ var clientConfig = {
        "clientId" : '1000.Y6XSTF5WOFO51G6AG3D77M5IYVP4KF',
        "domain"   : 'https://accounts.csez.zohocorpin.com'
    },
-   "INDC": {
+   "indc": {
        "clientId" : '1000.QVFZLQ634GIYNKPG3AAWDW8LZB7K0F',
        "domain"   : 'https://accounts.zoho.in'
    },
