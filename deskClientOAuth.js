@@ -22,6 +22,14 @@ var clientConfig = {
        "clientId" : '1000.QVFZLQ634GIYNKPG3AAWDW8LZB7K0F',
        "domain"   : 'https://accounts.zoho.in'
    },
+   "eudc": {
+       "clientId" : '1000.MUWZ1VI93V8YJT56WU8B9E6TYHV1JN',
+       "domain"   : 'https://accounts.zoho.eu'
+   },
+   "audc": {
+       "clientId" : '1000.VVQSR2GYG2SAQ42QFUCWQ4N3HEMIBQ',
+       "domain"   : 'https://accounts.zoho.com.au'
+   },
    
 };
 
