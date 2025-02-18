@@ -37,6 +37,7 @@ let currentAppServer = 'live';
 let callback_after_authorize = (function(generatedOauthToken){
                                     document.getElementById("oauthtoken").innerHTML = generatedOauthToken;
                                     console.log('OAuthtoken = ' + generatedOauthToken );
+                                    copyButton.style.display =  'inline-block' ;
                                 });
 
 /******** replace above values with your own     ********/
