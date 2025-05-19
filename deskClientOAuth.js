@@ -11,7 +11,7 @@ var clientConfig = {
        "domain"   : 'https://accounts.zoho.com'
    },
    "local": {
-       "clientId" : '1000.Z19HZLE42ODY7QKWI39I7HA2HVTIQC',
+       "clientId" : '1000.ZSZLN9KOQ66U1K56M4TT3CFCR68GMJ',
        "domain"   : 'https://accounts.localzoho.com'
    },
    "dev": {
