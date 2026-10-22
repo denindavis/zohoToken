@@ -47,16 +47,16 @@ var clientConfig = {
        "domain"   : 'https://accounts.zoho.ae'
    },
    "sgdc": {
-       "clientId" : '',
-       "domain"   : 'https://accounts.zoho'
+       "clientId" : '1000.4UMCFCZDXJTZVR054B5IRPCS7BCNOK',
+       "domain"   : 'https://accounts.zoho.sg'
    },
    "cadc": {
-       "clientId" : '',
-       "domain"   : 'https://accounts.zoho'
+       "clientId" : '1000.VXY30JNR2XSYNPRIEK3QJ7W82DWT9K',
+       "domain"   : 'https://accounts.zohocloud.ca'
    },
    "sadc": {
-       "clientId" : '',
-       "domain"   : 'https://accounts.zoho'
+       "clientId" : '1000.T2LIG87LUK5FK02HXVMFVB38I68O4Y',
+       "domain"   : 'https://accounts.zoho.sa'
    },
 };
 
