@@ -30,7 +30,34 @@ var clientConfig = {
        "clientId" : '1000.VVQSR2GYG2SAQ42QFUCWQ4N3HEMIBQ',
        "domain"   : 'https://accounts.zoho.com.au'
    },
-   
+   "cndc": {
+       "clientId" : '1000.QNHOIBAPFIXHSG9FCG69KXI751LP6A',
+       "domain"   : 'https://accounts.zoho.com.cn'
+   },
+   "jpdc": {
+       "clientId" : '',
+       "domain"   : 'https://accounts.zoho'
+   },
+   "ukdc": {
+       "clientId" : '',
+       "domain"   : 'https://accounts.zoho'
+   },
+   "uaedc": {
+       "clientId" : '',
+       "domain"   : 'https://accounts.zoho'
+   },
+   "sgdc": {
+       "clientId" : '',
+       "domain"   : 'https://accounts.zoho'
+   },
+   "cadc": {
+       "clientId" : '',
+       "domain"   : 'https://accounts.zoho'
+   },
+   "sadc": {
+       "clientId" : '',
+       "domain"   : 'https://accounts.zoho'
+   },
 };
 
 let currentAppServer = 'live';
