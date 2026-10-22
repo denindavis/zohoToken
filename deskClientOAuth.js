@@ -35,16 +35,16 @@ var clientConfig = {
        "domain"   : 'https://accounts.zoho.com.cn'
    },
    "jpdc": {
-       "clientId" : '',
-       "domain"   : 'https://accounts.zoho'
+       "clientId" : '1000.ZMJJOWF4Q574DK8WLDSLXEMSD9R04Y',
+       "domain"   : 'https://accounts.zoho.jp'
    },
    "ukdc": {
-       "clientId" : '',
-       "domain"   : 'https://accounts.zoho'
+       "clientId" : '1000.MHS8W79T07YZ6Q6CZ301I01FJLUPAX',
+       "domain"   : 'https://accounts.zoho.uk'
    },
    "uaedc": {
-       "clientId" : '',
-       "domain"   : 'https://accounts.zoho'
+       "clientId" : '1000.LJI3S7OHW04X2OWHLNJE8BNHFIKQ8N',
+       "domain"   : 'https://accounts.zoho.ae'
    },
    "sgdc": {
        "clientId" : '',
